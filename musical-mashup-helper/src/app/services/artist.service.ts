@@ -31,10 +31,29 @@ export class ArtistService {
       firebase.database().ref(ref).once('value').then(
         (data: DataSnapshot) => {
           const artists: Artist[] = [];
-          data.forEach((c) => {
-            artists.push(c.val() as Artist);
+          data.forEach((a) => {
+            artists.push(a.val() as Artist);
           });
           resolve(artists);
+        },
+        (error) => {
+          reject(error);
+        });
+    });
+  }
+
+  public getArtistIDColorMap(){
+    const ref = ArtistService.reference;
+
+    return new Promise((resolve, reject) => {
+      firebase.database().ref(ref).once('value').then(
+        (data: DataSnapshot) => {
+          const colors: Map<string, string> = new Map<string,string>();
+          data.forEach((a) => {
+            let artist = a.val() as Artist;
+            colors.set(artist.id, artist.color);
+          });
+          resolve(colors);
         },
         (error) => {
           reject(error);

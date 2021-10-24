@@ -1,4 +1,11 @@
-<table *ngIf="songsLoaded">
+<div>
+    <ul *ngIf="artists && colors">
+        <li *ngFor="let artist of artists">
+            <button [style.background-color]="colors.get(artist.id)" (click)="onClickArtist(artist.id)">{{ artist.name }}</button>
+        </li>
+    </ul>
+</div>
+<table *ngIf="dataLoaded && colors">
     <tr>
         <td></td>
         <th scope="col" *ngFor="let tonality of tonalities">{{ tonality }}</th>
@@ -6,7 +13,10 @@
     <tr *ngFor="let bpm of songs, let i = index">
         <th scope="row">{{ min_bpm + i }}</th>
         <td *ngFor="let tonality of bpm, let j = index">
-            <div *ngFor="let s of tonality">
+            <div  
+                *ngFor="let s of tonality" 
+                [className]="idSelectedArtist.indexOf(s.artist) > -1 ? 'selected' : 'not-selected'"
+                [style.background-color]="colors.get(s.artist)">
                 {{ s.name }}
             </div>
         </td>

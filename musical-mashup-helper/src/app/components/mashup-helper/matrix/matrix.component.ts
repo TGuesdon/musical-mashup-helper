@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Artist } from 'src/app/models/artist.model';
 import { Song } from 'src/app/models/song.model';
 import { Tonality } from 'src/app/models/tonality.enum';
+import { ArtistService } from 'src/app/services/artist.service';
 import { SongService } from 'src/app/services/song.service';
 
 @Component({
@@ -23,9 +25,15 @@ export class MatrixComponent implements OnInit {
    * songs[Tonality][BPM]
    */
   public songs : Array<Array<Array<Song>>>;
-  public songsLoaded: boolean = false;
+  public dataLoaded: boolean = false;
 
-  constructor(private songService: SongService) {
+  public colors: Map<string, string>;
+  public artists: Artist[];
+
+  public idSelectedArtist: String[] = [];
+
+  constructor(private songService: SongService,
+                      private artistService: ArtistService) {
 
   }
 
@@ -34,7 +42,19 @@ export class MatrixComponent implements OnInit {
     this.songService.getAllSongs().then(
       (songs : Song[]) => {
         this.fillMatrix(songs);
-        this.songsLoaded = true;
+        this.dataLoaded = true;
+      }
+    )
+
+    this.artistService.getArtistIDColorMap().then(
+      (colors: Map<string, string>) => {
+        this.colors = colors;
+      }
+    )
+
+    this.artistService.getAllArtists().then(
+      (artists: Artist[]) => {
+        this.artists = artists;
       }
     )
   }
@@ -52,6 +72,15 @@ export class MatrixComponent implements OnInit {
       for(let j : number = 0; j < MatrixComponent.TONALITY_NUMBER; j++){
         this.songs[i][j] = new Array<Song>();
       }
+    }
+  }
+
+  onClickArtist(id: string){
+    let index = this.idSelectedArtist.indexOf(id);
+    if(index > -1){
+      this.idSelectedArtist.splice(index, 1);
+    }else{
+      this.idSelectedArtist.push(id);
     }
   }
 

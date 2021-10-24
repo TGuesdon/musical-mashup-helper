@@ -1,0 +1,14 @@
+<table *ngIf="songsLoaded">
+    <tr>
+        <td></td>
+        <th scope="col" *ngFor="let tonality of tonalities">{{ tonality }}</th>
+    </tr>
+    <tr *ngFor="let bpm of songs, let i = index">
+        <th scope="row">{{ min_bpm + i }}</th>
+        <td *ngFor="let tonality of bpm, let j = index">
+            <div *ngFor="let s of tonality">
+                {{ s.name }}
+            </div>
+        </td>
+    </tr>
+</table>

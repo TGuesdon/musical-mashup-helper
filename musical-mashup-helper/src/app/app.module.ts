@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { MashupHelperComponent } from './components/mashup-helper/mashup-helper.component';
 import { AddSongComponent } from './components/songs/add-song/add-song.component';
 import { AddArtistComponent } from './components/artists/add-artist/add-artist.component';
+import { MatrixComponent } from './components/mashup-helper/matrix/matrix.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { AddArtistComponent } from './components/artists/add-artist/add-artist.c
     MashupHelperComponent,
     AddSongComponent,
     AddArtistComponent,
+    MatrixComponent,
 
   ],
   imports: [

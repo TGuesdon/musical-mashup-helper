@@ -2,6 +2,7 @@ import { Tonality } from "./tonality.enum";
 
 export class Song {
 
+    id: string;
     name: string;
     artist: string;
     bpm: number;

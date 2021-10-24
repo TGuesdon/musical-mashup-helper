@@ -1,0 +1,15 @@
+<form [formGroup]="artistForm" (ngSubmit)="onAddArtist()">
+    <div>
+        <label>Name :</label>
+        <input name="name" type="text" formControlName="name">
+    </div>
+    <div>
+        <label>Color :</label>
+        <input name="color" type="color" formControlName="color">
+    </div>
+
+    <button type="submit"
+    [disabled]="artistForm.invalid">
+    Valider
+    </button>
+</form>

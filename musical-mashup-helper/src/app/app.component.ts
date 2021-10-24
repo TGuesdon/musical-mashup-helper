@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
-import { initializeApp } from "firebase/app";
+import firebase from 'firebase/compat/app';
 import { environment } from '../environments/environment';
+
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ export class AppComponent {
   title = 'musical-mashup-helper';
 
   constructor() {
-    initializeApp(environment.firebaseConfig);
+    firebase.initializeApp(environment.firebaseConfig);
   }
 
 }

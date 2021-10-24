@@ -1,0 +1,27 @@
+<form *ngIf="artists" [formGroup]="songForm" (ngSubmit)="onAddSong()">
+    <div>
+        <label>Name :</label>
+        <input name="name" type="text" formControlName="name">
+    </div>
+    <div>
+        <label>Artist :</label>
+        <select name="artist" formControlName="artist">
+            <option *ngFor="let artist of artists" [value]="artist.name">{{ artist.name }}</option>
+        </select>
+    </div>
+    <div>
+        <label>Bpm :</label>
+        <input name="bpm" type="number" formControlName="bpm">
+    </div>
+    <div>
+        <label>Tonality :</label>
+        <select name="tonality" formControlName="tonality">
+            <option *ngFor="let tonality of tonalities" [value]="tonality">{{ tonality }}</option>
+        </select>
+    </div>
+
+    <button type="submit"
+        [disabled]="songForm.invalid">
+        Valider
+    </button>
+</form>

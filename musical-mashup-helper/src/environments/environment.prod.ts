@@ -6,6 +6,7 @@ export const environment = {
     projectId: "musical-mashup-helper",
     storageBucket: "musical-mashup-helper.appspot.com",
     messagingSenderId: "257223414063",
-    appId: "1:257223414063:web:7d0901f1c41f8e6daa11da"
+    appId: "1:257223414063:web:7d0901f1c41f8e6daa11da",
+    databaseURL: "https://musical-mashup-helper-default-rtdb.europe-west1.firebasedatabase.app/"
   }
 };

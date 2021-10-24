@@ -8,6 +8,16 @@ import { MashupHelperComponent } from './components/mashup-helper/mashup-helper.
 import { AddSongComponent } from './components/songs/add-song/add-song.component';
 import { AddArtistComponent } from './components/artists/add-artist/add-artist.component';
 import { MatrixComponent } from './components/mashup-helper/matrix/matrix.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+/**
+ * Angular Material
+ */
+import {MatFormFieldModule} from '@angular/material/form-field'; 
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select'; 
+import {MatButtonModule} from '@angular/material/button'; 
+import {MatSnackBarModule} from '@angular/material/snack-bar'; 
 
 @NgModule({
   declarations: [
@@ -21,7 +31,13 @@ import { MatrixComponent } from './components/mashup-helper/matrix/matrix.compon
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

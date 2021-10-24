@@ -61,7 +61,8 @@ export class MatrixComponent implements OnInit {
 
   fillMatrix(songs : Song[]){
     songs.forEach((s : Song) => {
-      this.songs[s.bpm - this.min_bpm][Tonality[s.tonality]].push(s);
+      let round_bpm = Math.round(s.bpm);
+      this.songs[round_bpm - this.min_bpm][Tonality[s.tonality]].push(s);
     });
   }
 
@@ -82,6 +83,15 @@ export class MatrixComponent implements OnInit {
     }else{
       this.idSelectedArtist.push(id);
     }
+  }
+
+  isInt(value) {
+    var x;
+    if (isNaN(value)) {
+      return false;
+    }
+    x = parseFloat(value);
+    return (x | 0) === x;
   }
 
 }

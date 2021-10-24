@@ -8,6 +8,8 @@ import { Tonality } from 'src/app/models/tonality.enum';
 import { ArtistService } from 'src/app/services/artist.service';
 import { SongService } from 'src/app/services/song.service';
 
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-add-song',
   templateUrl: './add-song.component.html',
@@ -23,7 +25,8 @@ export class AddSongComponent implements OnInit {
 
   constructor(private formBuilder : FormBuilder,
               private songService: SongService,
-              private artisteService: ArtistService) { }
+              private artisteService: ArtistService,
+              private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.artisteService.getAllArtists().then(
@@ -66,7 +69,10 @@ export class AddSongComponent implements OnInit {
                           this.songForm.value.bpm,
                           this.songForm.value.tonality);
 
-      this.songService.addSong(song);
+      this.songService.addSong(song).then(() =>{
+        this.songForm.reset();
+        this._snackBar.open("Song added", "Ok");
+      });
     }
     
   }

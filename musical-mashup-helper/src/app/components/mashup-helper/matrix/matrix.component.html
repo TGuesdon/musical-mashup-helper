@@ -17,7 +17,8 @@
                 *ngFor="let s of tonality" 
                 [className]="idSelectedArtist.indexOf(s.artist) > -1 ? 'selected' : 'not-selected'"
                 [style.background-color]="colors.get(s.artist)">
-                {{ s.name }}
+                <div>{{ s.name }}</div>
+                <div *ngIf="!isInt(s.bpm)">{{ s.bpm }} BPM</div>
             </div>
         </td>
     </tr>

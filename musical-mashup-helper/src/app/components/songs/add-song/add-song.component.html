@@ -1,26 +1,35 @@
 <form *ngIf="artists" [formGroup]="songForm" (ngSubmit)="onAddSong()">
     <div>
-        <label>Name :</label>
-        <input name="name" type="text" formControlName="name">
+        <mat-form-field appearance="fill">
+            <mat-label>Name :</mat-label>
+            <input matInput name="name" type="text" formControlName="name">
+        </mat-form-field>
     </div>
     <div>
-        <label>Artist :</label>
-        <select name="artist" formControlName="artist">
-            <option *ngFor="let artist of artists" [value]="artist.id">{{ artist.name }}</option>
-        </select>
+        <mat-form-field appearance="fill">
+            <mat-label>Artist :</mat-label>
+            <mat-select name="artist" formControlName="artist">
+                <mat-option *ngFor="let artist of artists" [value]="artist.id">{{ artist.name }}</mat-option>
+            </mat-select>
+        </mat-form-field>   
     </div>
     <div>
-        <label>Bpm :</label>
-        <input name="bpm" type="number" formControlName="bpm">
+        <mat-form-field appearance="fill">
+            <mat-label>Bpm :</mat-label>
+            <input matInput name="bpm" type="number" formControlName="bpm">
+        </mat-form-field>
     </div>
     <div>
-        <label>Tonality :</label>
-        <select name="tonality" formControlName="tonality">
-            <option *ngFor="let tonality of tonalities" [value]="tonality">{{ tonality }}</option>
-        </select>
+        <mat-form-field appearance="fill">
+            <mat-label>Tonality :</mat-label>
+            <mat-select matInput name="tonality" formControlName="tonality">
+                <mat-option *ngFor="let tonality of tonalities" [value]="tonality">{{ tonality }}</mat-option>
+            </mat-select>
+        </mat-form-field>
     </div>
 
-    <button type="submit"
+
+    <button mat-button type="submit"
         [disabled]="songForm.invalid">
         Valider
     </button>

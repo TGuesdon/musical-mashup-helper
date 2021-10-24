@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+import { MashupHelperComponent } from './components/mashup-helper/mashup-helper.component';
+
+const routes: Routes = [
+  { path: '', component: MashupHelperComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

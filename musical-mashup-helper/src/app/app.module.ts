@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MashupHelperComponent } from './components/mashup-helper/mashup-helper.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MashupHelperComponent
   ],
   imports: [
     BrowserModule,

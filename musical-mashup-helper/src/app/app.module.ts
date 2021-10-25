@@ -9,6 +9,8 @@ import { AddSongComponent } from './components/songs/add-song/add-song.component
 import { AddArtistComponent } from './components/artists/add-artist/add-artist.component';
 import { MatrixComponent } from './components/mashup-helper/matrix/matrix.component';
 import { HeaderComponent } from './components/header/header.component'; 
+import { ListSongComponent } from './components/songs/list-song/list-song.component';
+import { ListArtistComponent } from './components/artists/list-artist/list-artist.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -21,8 +23,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button'; 
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { ListSongComponent } from './components/songs/list-song/list-song.component';
-import { ListArtistComponent } from './components/artists/list-artist/list-artist.component';
+import {MatTableModule} from '@angular/material/table'; 
+import {MatIconModule} from '@angular/material/icon'; 
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { ListArtistComponent } from './components/artists/list-artist/list-artis
     MatSelectModule,
     MatButtonModule,
     MatSnackBarModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTableModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -15,4 +15,8 @@ export class Song {
         this.tonality = tonality;
     }
 
+    setId(id: string){
+        this.id = id;
+    }
+
 }

@@ -1,1 +1,50 @@
-<p>list-song works!</p>
+<div id="body">
+    <div id="add">
+        <h2>Add songs</h2>
+        <app-add-song></app-add-song>
+    </div>
+    <div id="list">
+        <h2>All songs</h2>
+        <table mat-table [dataSource]="songs">
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+        
+            <!-- Artist Column -->
+            <ng-container matColumnDef="artist">
+                <th mat-header-cell *matHeaderCellDef> Artist </th>
+                <td mat-cell *matCellDef="let element"> {{element.artist}} </td>
+            </ng-container>
+        
+            <!-- Bpm -->
+            <ng-container matColumnDef="bpm">
+                <th mat-header-cell *matHeaderCellDef> Bpm </th>
+                <td mat-cell *matCellDef="let element"> {{element.bpm}} </td>
+            </ng-container>
+        
+            <!-- Tonality -->
+            <ng-container matColumnDef="tonality">
+                <th mat-header-cell *matHeaderCellDef> Tonality </th>
+                <td mat-cell *matCellDef="let element"> {{element.tonality}} </td>
+            </ng-container>
+        
+            <!-- Edit -->
+            <ng-container matColumnDef="edit">
+                <th mat-header-cell *matHeaderCellDef> Edit </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-button [routerLink]="'/add-song'" [queryParams]="{ id: element.id }">
+                        Edit
+                    </button> 
+                </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        
+    </div>
+</div>
+
+

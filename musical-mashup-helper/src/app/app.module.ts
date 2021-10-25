@@ -50,7 +50,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatSnackBarModule,
     MatToolbarModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

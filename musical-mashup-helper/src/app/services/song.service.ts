@@ -31,7 +31,7 @@ export class SongService {
   }
 
   public getSong(id: string){
-    const ref = SongService.reference + '/' + id;
+    const ref = SongService.reference + id;
 
     return new Promise((resolve, reject) => {
       firebase.database().ref(ref).once('value').then(

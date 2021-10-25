@@ -60,4 +60,38 @@ export class ArtistService {
         });
     });
   }
+
+  public getArtistIDNameMap(){
+    const ref = ArtistService.reference;
+
+    return new Promise((resolve, reject) => {
+      firebase.database().ref(ref).once('value').then(
+        (data: DataSnapshot) => {
+          const colors: Map<string, string> = new Map<string,string>();
+          data.forEach((a) => {
+            let artist = a.val() as Artist;
+            colors.set(artist.id, artist.name);
+          });
+          resolve(colors);
+        },
+        (error) => {
+          reject(error);
+        });
+    });
+  }
+
+  public getArtist(id: string){
+    const ref = ArtistService.reference + id;
+
+    return new Promise((resolve, reject) => {
+      firebase.database().ref(ref).once('value').then(
+          (data: DataSnapshot) => {
+            resolve(data.val());
+          },
+          (error) => reject(error)
+        );
+    });
+  }
+
+
 }

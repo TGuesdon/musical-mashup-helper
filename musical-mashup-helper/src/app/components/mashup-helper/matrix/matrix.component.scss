@@ -1,3 +1,75 @@
-.not-selected{
-    opacity: 0.3;
+.song.not-selected{
+    opacity: 0.1;
+}
+
+.song.selected{
+    font-weight: bolder;
+    box-shadow: var(--material-min);
+}
+
+#body{
+    display: flex;
+    margin-top: 40px;
+}
+
+#table{
+    width: 80%;
+}
+
+#table table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#table table tr:nth-child(even){
+    background-color: #333;
+}
+
+#table table tr:nth-child(odd){
+    background-color: #363636;
+}
+
+table, th, td {
+    border: 1px solid rgba(0,0,0,0.3);
+}
+
+.axis{
+    background-color: #3f51b5;
+    padding: 5px;
+    color: white;
+    font-weight: bolder;
+}
+
+.song{
+    text-align: center;
+    padding: 8px;
+}
+
+
+#artists{
+    width: 20%;
+}
+
+#artists ul{
+    list-style: none;
+    margin: 0;
+}
+
+#artists ul li .selector{
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    padding: 15px 0px;
+    transition: opacity 1s;
+}
+
+#artists ul li .selector.selected{
+    opacity: 1;
+    font-weight: bolder;
+    border-left: solid 8px #3f51b5;
+    box-shadow: var(--material-min);
+}
+
+#artists ul li .selector.not-selected{
+    opacity: 0.4;
 }

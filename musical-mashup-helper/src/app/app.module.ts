@@ -8,6 +8,8 @@ import { MashupHelperComponent } from './components/mashup-helper/mashup-helper.
 import { AddSongComponent } from './components/songs/add-song/add-song.component';
 import { AddArtistComponent } from './components/artists/add-artist/add-artist.component';
 import { MatrixComponent } from './components/mashup-helper/matrix/matrix.component';
+import { HeaderComponent } from './components/header/header.component'; 
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /**
@@ -17,7 +19,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select'; 
 import {MatButtonModule} from '@angular/material/button'; 
-import {MatSnackBarModule} from '@angular/material/snack-bar'; 
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { ListSongComponent } from './components/songs/list-song/list-song.component';
+import { ListArtistComponent } from './components/artists/list-artist/list-artist.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +31,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     AddSongComponent,
     AddArtistComponent,
     MatrixComponent,
+    HeaderComponent,
+    ListSongComponent,
+    ListArtistComponent,
 
   ],
   imports: [
@@ -37,7 +45,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

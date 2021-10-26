@@ -3,7 +3,7 @@
         <table *ngIf="dataLoaded && colors">
             <tr>
                 <td class="axis"></td>
-                <th class="axis" scope="col" *ngFor="let tonality of tonalities">{{ tonality }}</th>
+                <th class="axis tonalities" scope="col" *ngFor="let tonality of tonalities">{{ tonality }}</th>
             </tr>
             <tr *ngFor="let bpm of songs, let i = index">
                 <th class="axis" scope="row">{{ min_bpm + i }}</th>

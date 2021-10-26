@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/musical-mashup-helper",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

@@ -4,6 +4,7 @@ import { Artist } from '../models/artist.model';
 import firebase from 'firebase/compat/app';
 import "firebase/compat/database";
 import DataSnapshot = firebase.database.DataSnapshot;
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,9 @@ export class ArtistService {
   constructor() { }
 
   private static reference = '/artists/';
+
+  public artists: Artist[] = [];
+  public artistsSubject: BehaviorSubject<Artist[]> = new BehaviorSubject<Artist[]>(this.artists);
 
   public addArtist(artist: Artist){
     const ref = ArtistService.reference;
@@ -93,5 +97,25 @@ export class ArtistService {
     });
   }
 
+  /** Synchronized */
+  public emitArtists(){
+    this.artistsSubject.next(this.artists);
+  }
+
+  public getAllArtistsObservable(){
+    const ref = ArtistService.reference;
+
+    return firebase
+    .database()
+    .ref(ref)
+    .on('value', (data: DataSnapshot) => {
+      const artists: Artist[] = [];
+      data.forEach((c) => {
+        artists.push(c.val() as Artist);
+      });
+      this.artists = artists;
+      this.emitArtists();
+    });
+  }
 
 }

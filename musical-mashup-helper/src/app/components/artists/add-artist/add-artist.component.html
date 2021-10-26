@@ -1,14 +1,18 @@
 <form [formGroup]="artistForm" (ngSubmit)="onAddArtist()">
     <div>
-        <label>Name :</label>
-        <input name="name" type="text" formControlName="name">
+        <mat-form-field appearance="fill">
+            <mat-label>Name :</mat-label>
+            <input matInput name="name" type="text" formControlName="name">
+        </mat-form-field>
     </div>
     <div>
-        <label>Color :</label>
-        <input name="color" type="color" formControlName="color">
+        <mat-form-field appearance="fill">
+            <mat-label>Color :</mat-label>
+            <input matInput name="color" type="color" formControlName="color">
+        </mat-form-field>
     </div>
 
-    <button type="submit"
+    <button mat-button type="submit"
     [disabled]="artistForm.invalid">
     Valider
     </button>

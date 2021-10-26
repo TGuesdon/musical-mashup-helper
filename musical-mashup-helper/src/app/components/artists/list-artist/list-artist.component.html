@@ -1,1 +1,35 @@
-<p>list-artist works!</p>
+<div id="body">
+    <div id="add">
+        <h2>Add artists</h2>
+        <app-add-artist></app-add-artist>
+    </div>
+    <div id="list">
+        <h2>All artists</h2>
+        <table mat-table [dataSource]="artists">
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <!-- Color Column -->
+            <ng-container matColumnDef="color">
+                <th mat-header-cell *matHeaderCellDef> Color </th>
+                <td mat-cell *matCellDef="let element"> {{element.color}} </td>
+            </ng-container>
+
+            <!-- Edit -->
+            <ng-container matColumnDef="edit">
+                <th mat-header-cell *matHeaderCellDef> Edit </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-button [routerLink]="'/add-artist'" [queryParams]="{ id: element.id }">
+                        Edit
+                    </button> 
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>

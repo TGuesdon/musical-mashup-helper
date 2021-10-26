@@ -51,6 +51,10 @@ export class AddSongComponent implements OnInit {
     )
   }
 
+  ngOnDestroy(): void {
+    this.songSubscription.unsubscribe();
+  }
+
   initForm(){
     this.songForm = this.formBuilder.group({
       name: [

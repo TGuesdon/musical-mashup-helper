@@ -9,4 +9,8 @@ export class Artist {
         this.color = color;
     }
 
+    setId(id: string){
+        this.id = id;
+    }
+
 }

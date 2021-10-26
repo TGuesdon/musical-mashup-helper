@@ -5,13 +5,17 @@ import firebase from 'firebase/compat/app';
 import "firebase/compat/database";
 import DataSnapshot = firebase.database.DataSnapshot;
 import { BehaviorSubject } from 'rxjs';
+import { SongService } from './song.service';
+import { Song } from '../models/song.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArtistService {
 
-  constructor() { }
+  constructor(
+    private songService: SongService
+  ) { }
 
   private static reference = '/artists/';
 
@@ -95,6 +99,26 @@ export class ArtistService {
           (error) => reject(error)
         );
     });
+  }
+
+  async deleteArtist(id: string){
+    await this.deleteSongFromArtist(id);
+
+    let ref = ArtistService.reference + id;
+
+    return firebase.database().ref(ref).remove();
+  }
+
+  async deleteSongFromArtist(id: string){
+    this.songService.getSongFromArtist(id).then(
+      (songs: Song[]) => {
+        songs.forEach(
+          (s : Song) => {
+            this.songService.deleteSong(s.id);
+          }
+        )
+      }
+    );
   }
 
   /** Synchronized */

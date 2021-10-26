@@ -2,6 +2,9 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Artist } from 'src/app/models/artist.model';
 import { ArtistService } from 'src/app/services/artist.service';
+import { WarningDeleteComponent } from '../../utils/warning-delete/warning-delete.component';
+
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-list-artist',
@@ -17,7 +20,8 @@ export class ListArtistComponent implements OnInit {
 
   constructor(
     private artistService: ArtistService,
-    private changeDetectorRefs: ChangeDetectorRef
+    private changeDetectorRefs: ChangeDetectorRef,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -33,6 +37,16 @@ export class ListArtistComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.artistsSubscription.unsubscribe();
+  }
+
+  public openDeleteWarning(id: string){
+    const dialogRef = this.dialog.open(WarningDeleteComponent);
+    
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.artistService.deleteArtist(id);
+      }
+    });
   }
 
 }

@@ -3,9 +3,9 @@ import { Subscription } from 'rxjs';
 import { Song } from 'src/app/models/song.model';
 import { ArtistService } from 'src/app/services/artist.service';
 import { SongService } from 'src/app/services/song.service';
-
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { WarningDeleteComponent } from '../../utils/warning-delete/warning-delete.component';
+
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-list-song',

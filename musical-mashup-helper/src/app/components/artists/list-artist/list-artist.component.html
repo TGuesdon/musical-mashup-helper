@@ -25,6 +25,9 @@
                     <button mat-button [routerLink]="'/add-artist'" [queryParams]="{ id: element.id }">
                         Edit
                     </button> 
+                    <button mat-button color="warn" (click)="openDeleteWarning(element.id)">
+                        Supprimer
+                    </button>
                 </td>
             </ng-container>
 

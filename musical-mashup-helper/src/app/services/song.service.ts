@@ -43,6 +43,26 @@ export class SongService {
     });
   }
 
+  public getSongFromArtist(id: string){
+    const ref = SongService.reference;
+
+    return new Promise((resolve, reject) => {
+      firebase.database().ref(ref).once('value').then(
+        (data: DataSnapshot) => {
+          const songs: Song[] = [];
+          data.forEach((c) => {
+            if((c.val() as Song).artist == id){
+              songs.push(c.val() as Song);
+            }
+          });
+          resolve(songs);
+        },
+        (error) => {
+          reject(error);
+        });
+    });
+  }
+
   public getAllSongs(){
     const ref = SongService.reference;
 

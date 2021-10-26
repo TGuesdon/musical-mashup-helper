@@ -13,7 +13,7 @@ import { SongService } from 'src/app/services/song.service';
 export class MatrixComponent implements OnInit {
 
   public static TONALITY_NUMBER : number = Object.keys(Tonality).length / 2;
-  public min_bpm : number = 70;
+  public min_bpm : number = 80;
   public max_bpm : number = 180;
 
   /**

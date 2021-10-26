@@ -25,6 +25,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTableModule} from '@angular/material/table'; 
 import {MatIconModule} from '@angular/material/icon'; 
+import {MatDialogModule} from '@angular/material/dialog';
+import { WarningDeleteComponent } from './components/utils/warning-delete/warning-delete.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import {MatIconModule} from '@angular/material/icon';
     HeaderComponent,
     ListSongComponent,
     ListArtistComponent,
+    WarningDeleteComponent,
 
   ],
   imports: [
@@ -51,6 +54,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatToolbarModule,
     MatTableModule,
     MatIconModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

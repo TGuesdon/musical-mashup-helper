@@ -82,4 +82,8 @@ export class SongService {
     });
   }
 
+  async deleteSong(id: string){
+    let ref = SongService.reference + id;
+    return firebase.database().ref(ref).remove();
+  }
 }

@@ -1,11 +1,17 @@
 <mat-toolbar color="primary">
-    <button mat-button [routerLink]="''">
-        Mashup table
-    </button>
-    <button mat-button [routerLink]="'list-song'">
-        Songs
-    </button>
-    <button mat-button [routerLink]="'list-artist'">
-        Artists
-    </button>
+    <div *ngIf="authService.isAuth">
+        <button mat-button [routerLink]="''">
+            Mashup table
+        </button>
+        <button mat-button [routerLink]="'list-song'">
+            Songs
+        </button>
+        <button mat-button [routerLink]="'list-artist'">
+            Artists
+        </button>
+    </div>
+    <div *ngIf="!authService.isAuth">
+        <mat-icon color="warn">link_off</mat-icon>
+    </div>
+
 </mat-toolbar>

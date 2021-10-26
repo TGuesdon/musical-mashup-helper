@@ -27,6 +27,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon'; 
 import {MatDialogModule} from '@angular/material/dialog';
 import { WarningDeleteComponent } from './components/utils/warning-delete/warning-delete.component';
+import { AuthComponent } from './components/utils/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { WarningDeleteComponent } from './components/utils/warning-delete/warnin
     ListSongComponent,
     ListArtistComponent,
     WarningDeleteComponent,
+    AuthComponent,
 
   ],
   imports: [

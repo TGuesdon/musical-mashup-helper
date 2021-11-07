@@ -35,9 +35,10 @@ table, th, td {
 
 .axis{
     background-color: #3f51b5;
-    padding: 5px;
+    padding: 2px;
     color: white;
     font-weight: bolder;
+    font-size: 16px;
 }
 
 .axis.tonalities{
@@ -48,8 +49,10 @@ table, th, td {
 
 .song{
     text-align: center;
-    padding: 8px;
+    padding: 2px;
     transition: opacity 1s;
+    font-size: 12px;
+    line-height: 12px;
 }
 
 

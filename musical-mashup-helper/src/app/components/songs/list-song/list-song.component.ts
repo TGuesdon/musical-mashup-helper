@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Song } from 'src/app/models/song.model';
 import { ArtistService } from 'src/app/services/artist.service';
@@ -6,6 +6,8 @@ import { SongService } from 'src/app/services/song.service';
 import { WarningDeleteComponent } from '../../utils/warning-delete/warning-delete.component';
 
 import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-list-song',
@@ -16,10 +18,13 @@ export class ListSongComponent implements OnInit {
 
   public songs: Song[];
   public songsSubscription: Subscription;
+  public dataSource: MatTableDataSource<Song> = new MatTableDataSource<Song>();
 
   public displayedColumns: string[] = ['name', 'artist', 'bpm', 'tonality', 'action'];
 
   public artists_name: Map<string, string>;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
     private songService: SongService,
@@ -33,6 +38,8 @@ export class ListSongComponent implements OnInit {
     this.songsSubscription = this.songService.songsSubject.subscribe(
       (songs: Song[]) => {
         this.songs = songs;
+        this.dataSource.data = songs;
+        this.dataSource.paginator = this.paginator;
       }
     )
 

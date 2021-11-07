@@ -11,6 +11,8 @@ import { MatrixComponent } from './components/mashup-helper/matrix/matrix.compon
 import { HeaderComponent } from './components/header/header.component'; 
 import { ListSongComponent } from './components/songs/list-song/list-song.component';
 import { ListArtistComponent } from './components/artists/list-artist/list-artist.component';
+import { WarningDeleteComponent } from './components/utils/warning-delete/warning-delete.component';
+import { AuthComponent } from './components/utils/auth/auth.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -26,8 +28,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTableModule} from '@angular/material/table'; 
 import {MatIconModule} from '@angular/material/icon'; 
 import {MatDialogModule} from '@angular/material/dialog';
-import { WarningDeleteComponent } from './components/utils/warning-delete/warning-delete.component';
-import { AuthComponent } from './components/utils/auth/auth.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { AuthComponent } from './components/utils/auth/auth.component';
     MatToolbarModule,
     MatTableModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

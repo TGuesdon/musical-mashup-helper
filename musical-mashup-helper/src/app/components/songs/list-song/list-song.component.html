@@ -6,6 +6,10 @@
     <div id="list">
         <div *ngIf="songs && artists_name">
         <h2>All songs</h2>
+        <mat-form-field appearance="fill">
+            <mat-label>Titre :</mat-label>
+            <input [ngModel]="searchString" (ngModelChange)="searchStringChange($event)" name="search" matInput class="mat-select" type="text" >
+        </mat-form-field>
         <table mat-table [dataSource]="dataSource">
             <!-- Name Column -->
             <ng-container matColumnDef="name">

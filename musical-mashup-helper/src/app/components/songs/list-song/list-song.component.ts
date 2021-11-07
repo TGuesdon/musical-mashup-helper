@@ -18,6 +18,8 @@ export class ListSongComponent implements OnInit {
 
   public songs: Song[];
   public songsSubscription: Subscription;
+
+  public searchString: string = '';
   public dataSource: MatTableDataSource<Song> = new MatTableDataSource<Song>();
 
   public displayedColumns: string[] = ['name', 'artist', 'bpm', 'tonality', 'action'];
@@ -38,8 +40,12 @@ export class ListSongComponent implements OnInit {
     this.songsSubscription = this.songService.songsSubject.subscribe(
       (songs: Song[]) => {
         this.songs = songs;
-        this.dataSource.data = songs;
+        this.dataSource = new MatTableDataSource<Song>(songs);
         this.dataSource.paginator = this.paginator;
+        this.dataSource.filter = this.searchString.trim().toLowerCase();
+        this.dataSource.filterPredicate = (data, filter: string) => {
+          return this.artists_name.get(data.artist).toLowerCase().includes(filter) || data.name.toLowerCase().includes(filter);
+        }
       }
     )
 
@@ -52,10 +58,18 @@ export class ListSongComponent implements OnInit {
 
   ngAfterViewInit(): void{
     this.dataSource.paginator = this.paginator;
+    this.dataSource.filter = this.searchString.trim().toLowerCase();
+    this.dataSource.filterPredicate = (data, filter: string) => {
+      return this.artists_name.get(data.artist).toLowerCase().includes(filter) || data.name.toLowerCase().includes(filter);
+    }
   }
 
   ngOnDestroy(): void{
     this.songsSubscription.unsubscribe();
+  }
+
+  searchStringChange(value){
+    this.dataSource.filter = value.trim().toLowerCase();
   }
 
   public openDeleteWarning(id: string){

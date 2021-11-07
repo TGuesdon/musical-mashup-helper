@@ -4,7 +4,7 @@ import { Song } from 'src/app/models/song.model';
 import { ArtistService } from 'src/app/services/artist.service';
 import { SongService } from 'src/app/services/song.service';
 import { WarningDeleteComponent } from '../../utils/warning-delete/warning-delete.component';
-
+import { AddSongDialogComponent } from '../add-song-dialog/add-song-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -78,6 +78,14 @@ export class ListSongComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if(result){
         this.songService.deleteSong(id);
+      }
+    });
+  }
+
+  public openEditDialog(id: string){
+    const dialogRef = this.dialog.open(AddSongDialogComponent, {
+      data: {
+        id: id
       }
     });
   }

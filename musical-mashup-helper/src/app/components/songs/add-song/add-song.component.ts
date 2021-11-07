@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Artist } from 'src/app/models/artist.model';
 
@@ -11,6 +11,8 @@ import { SongService } from 'src/app/services/song.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { MatDialogRef } from '@angular/material/dialog';
+import { AddSongDialogComponent } from '../add-song-dialog/add-song-dialog.component';
 
 @Component({
   selector: 'app-add-song',
@@ -27,28 +29,35 @@ export class AddSongComponent implements OnInit {
 
   private songSubscription: Subscription;
 
-  constructor(private route: ActivatedRoute,
-              private formBuilder : FormBuilder,
+  @Input() id: string;
+  @Input() dialogRef: MatDialogRef<AddSongDialogComponent>;
+
+  constructor(private formBuilder : FormBuilder,
               private songService: SongService,
               private artisteService: ArtistService,
               private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    this.songSubscription = this.route.queryParams.subscribe(
-      params => {
-        this.songService.getSong(params['id']).then(
-          (song: Song) => {
-            this.song = song;
-            this.artisteService.getAllArtists().then(
-              (artists: Artist[]) => {
-                this.artists = artists;
-                this.initForm();
-              }
-            )
-          }
-        )
-      }
-    )
+    if(this.id != null){
+      this.songService.getSong(this.id).then(
+        (song: Song) => {
+          this.song = song;
+          this.artisteService.getAllArtists().then(
+            (artists: Artist[]) => {
+              this.artists = artists;
+              this.initForm();
+            }
+          )
+        }
+      )
+    }else{
+      this.artisteService.getAllArtists().then(
+        (artists: Artist[]) => {
+          this.artists = artists;
+          this.initForm();
+        }
+      )
+    }
   }
 
   ngOnDestroy(): void {
@@ -100,6 +109,11 @@ export class AddSongComponent implements OnInit {
           });
       }else{
         this._snackBar.open("Song added", "Ok");
+      }
+
+      if(this.dialogRef != null){
+        //If this is called as a dialog
+        this.dialogRef.close();
       }
     });
 

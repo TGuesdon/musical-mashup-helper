@@ -30,6 +30,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon'; 
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { AddSongDialogComponent } from './components/songs/add-song-dialog/add-song-dialog.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     ListArtistComponent,
     WarningDeleteComponent,
     AuthComponent,
+    AddSongDialogComponent,
 
   ],
   imports: [

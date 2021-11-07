@@ -1,7 +1,7 @@
 ### Easy :
 
 - Réduire taille case ( typo + padding ) OK
-- Augmenter taille police axes
+- Augmenter taille police axes OK
 - Bouton retour en haut
 - Selectionner tous les artistes
 - Select des artistes / tonalités plus grand

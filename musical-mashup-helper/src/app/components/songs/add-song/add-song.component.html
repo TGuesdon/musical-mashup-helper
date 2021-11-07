@@ -2,14 +2,14 @@
     <div>
         <mat-form-field appearance="fill">
             <mat-label>Name :</mat-label>
-            <input matInput name="name" type="text" formControlName="name">
+            <input matInput class="mat-select" name="name" type="text" formControlName="name">
         </mat-form-field>
     </div>
     <div>
         <mat-form-field appearance="fill">
             <mat-label>Artist :</mat-label>
             <mat-select name="artist" formControlName="artist">
-                <mat-option *ngFor="let artist of artists" [value]="artist.id">{{ artist.name }}</mat-option>
+                <mat-option class="option" *ngFor="let artist of artists" [ngStyle]="{ 'border-color' : artist.color }" [value]="artist.id">{{ artist.name }}</mat-option>
             </mat-select>
         </mat-form-field>   
     </div>
@@ -22,7 +22,7 @@
     <div>
         <mat-form-field appearance="fill">
             <mat-label>Tonality :</mat-label>
-            <mat-select matInput name="tonality" formControlName="tonality">
+            <mat-select matInput class="mat-select" name="tonality" formControlName="tonality">
                 <mat-option *ngFor="let tonality of tonalities" [value]="tonality">{{ tonality }}</mat-option>
             </mat-select>
         </mat-form-field>

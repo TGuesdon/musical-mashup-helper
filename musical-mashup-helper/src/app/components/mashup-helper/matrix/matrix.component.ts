@@ -55,6 +55,7 @@ export class MatrixComponent implements OnInit {
     this.artistService.getAllArtists().then(
       (artists: Artist[]) => {
         this.artists = artists;
+        this.selectAllArtists();
       }
     )
   }

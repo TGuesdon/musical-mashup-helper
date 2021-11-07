@@ -50,6 +50,10 @@ export class ListSongComponent implements OnInit {
     )
   }
 
+  ngAfterViewInit(): void{
+    this.dataSource.paginator = this.paginator;
+  }
+
   ngOnDestroy(): void{
     this.songsSubscription.unsubscribe();
   }

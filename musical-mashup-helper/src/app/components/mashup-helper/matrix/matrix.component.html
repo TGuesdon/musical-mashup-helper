@@ -20,16 +20,26 @@
         </table>
     </div>
     <div id="artists">
-        <ul *ngIf="artists && colors">
-            <li *ngFor="let artist of artists">
-                <button
-                [style.background-color]="colors.get(artist.id)"
-                [className]="idSelectedArtist.indexOf(artist.id) > -1 ? 'selector selected' : 'selector not-selected'" 
-                (click)="onClickArtist(artist.id)">
-                    <span class="name">{{ artist.name }}</span>
+        <div id="sticky">
+            <div id="controls">
+                <button mat-button color="primary" (click)="selectAllArtists()">
+                    Select all
                 </button>
-            </li>
-        </ul>
+                <button mat-button color="primary" (click)="deselectAllArtists()">
+                    Deselect all
+                </button>
+            </div>
+            <ul *ngIf="artists && colors">
+                <li *ngFor="let artist of artists">
+                    <button
+                    [style.background-color]="colors.get(artist.id)"
+                    [className]="idSelectedArtist.indexOf(artist.id) > -1 ? 'selector selected' : 'selector not-selected'" 
+                    (click)="onClickArtist(artist.id)">
+                        <span class="name">{{ artist.name }}</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
 

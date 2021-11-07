@@ -2,7 +2,7 @@
 
 - Réduire taille case ( typo + padding ) OK
 - Augmenter taille police axes OK
-- Bouton retour en haut
+- Bouton retour en haut OK
 - Selectionner tous les artistes
 - Select des artistes / tonalités plus grand
 - Tous les sons sélectionnés à l'ouverture

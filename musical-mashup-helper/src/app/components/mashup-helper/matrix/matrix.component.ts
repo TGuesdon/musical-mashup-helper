@@ -76,6 +76,20 @@ export class MatrixComponent implements OnInit {
     }
   }
 
+  selectAllArtists(){
+    this.artists.forEach(
+      (a : Artist) => {
+        if(this.idSelectedArtist.indexOf(a.id) == -1){
+          this.idSelectedArtist.push(a.id);
+        }
+      }
+    )
+  }
+
+  deselectAllArtists(){
+    this.idSelectedArtist = [];
+  }
+
   onClickArtist(id: string){
     let index = this.idSelectedArtist.indexOf(id);
     if(index > -1){

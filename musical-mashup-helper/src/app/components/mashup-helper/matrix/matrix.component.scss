@@ -60,11 +60,19 @@ table, th, td {
     width: 20%;
 }
 
-#artists ul{
-    list-style: none;
+#artists #sticky{
     position: sticky;
     top: 40px;
+}
+
+#artists #sticky ul{
+    list-style: none;
     margin: 0;
+}
+
+#controls{
+    padding-left: 40px;
+    text-align: center;
 }
 
 #artists ul li .selector{

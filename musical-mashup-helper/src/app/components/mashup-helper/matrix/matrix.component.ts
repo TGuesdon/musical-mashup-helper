@@ -3,6 +3,7 @@ import { Artist } from 'src/app/models/artist.model';
 import { Song } from 'src/app/models/song.model';
 import { Tonality } from 'src/app/models/tonality.enum';
 import { ArtistService } from 'src/app/services/artist.service';
+import { FiltersService } from 'src/app/services/filters.service';
 import { SongService } from 'src/app/services/song.service';
 
 @Component({
@@ -33,7 +34,8 @@ export class MatrixComponent implements OnInit {
   public idSelectedArtist: String[] = [];
 
   constructor(private songService: SongService,
-                      private artistService: ArtistService) {
+              private artistService: ArtistService,
+              public filtersService: FiltersService) {
 
   }
 
@@ -55,7 +57,9 @@ export class MatrixComponent implements OnInit {
     this.artistService.getAllArtists().then(
       (artists: Artist[]) => {
         this.artists = artists;
-        this.selectAllArtists();
+        if(this.filtersService.idSelectedArtists == null){
+          this.filtersService.initializeArtists(artists);
+        }
       }
     )
   }
@@ -74,29 +78,6 @@ export class MatrixComponent implements OnInit {
       for(let j : number = 0; j < MatrixComponent.TONALITY_NUMBER; j++){
         this.songs[i][j] = new Array<Song>();
       }
-    }
-  }
-
-  selectAllArtists(){
-    this.artists.forEach(
-      (a : Artist) => {
-        if(this.idSelectedArtist.indexOf(a.id) == -1){
-          this.idSelectedArtist.push(a.id);
-        }
-      }
-    )
-  }
-
-  deselectAllArtists(){
-    this.idSelectedArtist = [];
-  }
-
-  onClickArtist(id: string){
-    let index = this.idSelectedArtist.indexOf(id);
-    if(index > -1){
-      this.idSelectedArtist.splice(index, 1);
-    }else{
-      this.idSelectedArtist.push(id);
     }
   }
 

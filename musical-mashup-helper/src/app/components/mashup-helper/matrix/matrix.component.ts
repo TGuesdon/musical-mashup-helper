@@ -5,7 +5,8 @@ import { Tonality } from 'src/app/models/tonality.enum';
 import { ArtistService } from 'src/app/services/artist.service';
 import { FiltersService } from 'src/app/services/filters.service';
 import { SongService } from 'src/app/services/song.service';
-
+import { MatDialog } from '@angular/material/dialog';
+import { AddSongDialogComponent } from '../../songs/add-song-dialog/add-song-dialog.component';
 @Component({
   selector: 'app-matrix',
   templateUrl: './matrix.component.html',
@@ -35,7 +36,8 @@ export class MatrixComponent implements OnInit {
 
   constructor(private songService: SongService,
               private artistService: ArtistService,
-              public filtersService: FiltersService) {
+              public filtersService: FiltersService,
+              private dialog: MatDialog) {
 
   }
 
@@ -79,6 +81,25 @@ export class MatrixComponent implements OnInit {
         this.songs[i][j] = new Array<Song>();
       }
     }
+  }
+
+  openEditDialog(id: string, i: number, j: number, k: number){
+    const dialogRef = this.dialog.open(AddSongDialogComponent, {
+      data: {
+        id: id
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(
+      (song: Song) => {
+        if(song){
+          //Only visual update
+          const copy = this.songs.slice();
+          copy[i][j][k] = song;
+          this.songs = copy;
+        }
+      }
+    )
   }
 
   isInt(value) {

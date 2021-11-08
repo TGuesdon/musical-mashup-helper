@@ -9,9 +9,10 @@
                 <th class="axis" scope="row">{{ min_bpm + i }}</th>
                 <td *ngFor="let tonality of bpm, let j = index">
                     <div 
-                        *ngFor="let s of tonality" 
+                        *ngFor="let s of tonality, let k = index" 
                         [className]="filtersService.idSelectedArtists.indexOf(s.artist) > -1 ? 'song selected' : 'song not-selected'"
-                        [style.background-color]="colors.get(s.artist)">
+                        [style.background-color]="colors.get(s.artist)"
+                        (click)="openEditDialog(s.id, i, j, k)">
                         <div>{{ s.name }}</div>
                         <div *ngIf="!isInt(s.bpm)">{{ s.bpm }} BPM</div>
                     </div>

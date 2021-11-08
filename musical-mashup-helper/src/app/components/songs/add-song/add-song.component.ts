@@ -60,10 +60,6 @@ export class AddSongComponent implements OnInit {
     }
   }
 
-  ngOnDestroy(): void {
-    this.songSubscription.unsubscribe();
-  }
-
   initForm(){
     this.songForm = this.formBuilder.group({
       name: [
@@ -113,7 +109,7 @@ export class AddSongComponent implements OnInit {
 
       if(this.dialogRef != null){
         //If this is called as a dialog
-        this.dialogRef.close();
+        this.dialogRef.close(song);
       }
     });
 

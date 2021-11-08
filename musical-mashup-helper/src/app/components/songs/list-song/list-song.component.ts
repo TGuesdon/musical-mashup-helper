@@ -31,7 +31,7 @@ export class ListSongComponent implements OnInit {
   constructor(
     private songService: SongService,
     private artistService: ArtistService,
-    public dialog: MatDialog
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {

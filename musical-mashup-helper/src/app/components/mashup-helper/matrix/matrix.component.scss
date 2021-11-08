@@ -33,6 +33,10 @@ table, th, td {
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+#table table tr.row:hover{
+    background-color: #3f51b5;
+}
+
 .axis{
     background-color: #3f51b5;
     padding: 2px;

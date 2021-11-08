@@ -17,6 +17,7 @@ export class ControlsService {
   }
 
   selectArtists(artists){
+    
     artists.forEach(
       (a : Artist) => {
         if(this.idSelectedArtists.indexOf(a.id) == -1){

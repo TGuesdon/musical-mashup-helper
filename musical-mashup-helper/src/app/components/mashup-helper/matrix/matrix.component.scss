@@ -9,7 +9,7 @@
 
 #body{
     display: flex;
-    margin-top: 40px;
+    margin-top: 10px;
 }
 
 #table{
@@ -72,11 +72,14 @@ table, th, td {
 
 #artists #sticky ul{
     list-style: none;
+    max-height: 70vh;
+    overflow-y: scroll;
     margin: 0;
+    padding-inline-start: 10px;
 }
 
 #controls{
-    padding-left: 40px;
+    padding-left: 10px;
     text-align: center;
 }
 

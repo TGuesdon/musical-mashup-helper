@@ -23,11 +23,11 @@
     <div id="artists">
         <div id="sticky">
             <div id="controls">
-                <button mat-button color="primary" (click)="controlsService.selectArtists(artists)">
-                    Select all
+                <button mat-icon-button color="primary" (click)="controlsService.selectArtists(artists)">
+                    <mat-icon>select_all</mat-icon>
                 </button>
-                <button mat-button color="primary" (click)="controlsService.deselectAllArtists()">
-                    Deselect all
+                <button mat-icon-button color="primary" (click)="controlsService.deselectAllArtists()">
+                    <mat-icon>remove</mat-icon>
                 </button>
             </div>
             <ul *ngIf="artists && colors">

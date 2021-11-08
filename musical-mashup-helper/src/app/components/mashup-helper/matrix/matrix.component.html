@@ -10,9 +10,9 @@
                 <td *ngFor="let tonality of bpm, let j = index">
                     <div 
                         *ngFor="let s of tonality, let k = index" 
-                        [className]="filtersService.idSelectedArtists.indexOf(s.artist) > -1 ? 'song selected' : 'song not-selected'"
+                        [className]="controlsService.idSelectedArtists.indexOf(s.artist) > -1 ? 'song selected' : 'song not-selected'"
                         [style.background-color]="colors.get(s.artist)"
-                        (click)="openEditDialog(s.id, i, j, k)">
+                        (click)="openControlDialog(s.id, i, j, k)">
                         <div>{{ s.name }}</div>
                         <div *ngIf="!isInt(s.bpm)">{{ s.bpm }} BPM</div>
                     </div>
@@ -23,10 +23,10 @@
     <div id="artists">
         <div id="sticky">
             <div id="controls">
-                <button mat-button color="primary" (click)="filtersService.selectArtists(artists)">
+                <button mat-button color="primary" (click)="controlsService.selectArtists(artists)">
                     Select all
                 </button>
-                <button mat-button color="primary" (click)="filtersService.deselectAllArtists()">
+                <button mat-button color="primary" (click)="controlsService.deselectAllArtists()">
                     Deselect all
                 </button>
             </div>
@@ -34,8 +34,8 @@
                 <li *ngFor="let artist of artists">
                     <button
                     [style.background-color]="colors.get(artist.id)"
-                    [className]="filtersService.idSelectedArtists.indexOf(artist.id) > -1 ? 'selector selected' : 'selector not-selected'" 
-                    (click)="filtersService.changeArtist(artist.id)">
+                    [className]="controlsService.idSelectedArtists.indexOf(artist.id) > -1 ? 'selector selected' : 'selector not-selected'" 
+                    (click)="controlsService.changeArtist(artist.id)">
                         <span class="name">{{ artist.name }}</span>
                     </button>
                 </li>

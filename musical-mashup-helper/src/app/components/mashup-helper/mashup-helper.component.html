@@ -3,8 +3,16 @@
 
     <p>Click on the artist to highlight their songs</p>
     <app-matrix></app-matrix>
-    <a mat-fab color="primary" href="#body" class="toTop">
-        <mat-icon>keyboard_arrow_up</mat-icon>
-    </a>
+    <div class="controls">
+        <mat-card>
+            <mat-slide-toggle [(ngModel)]="controlsService.editMode" class="toggle">
+                <mat-icon>{{ controlsService.getModeLabel() }}</mat-icon>
+            </mat-slide-toggle>
+            <a mat-mini-fab color="primary" href="#body" >
+                <mat-icon>keyboard_arrow_up</mat-icon>
+            </a>
+        </mat-card>
+    </div>
+
 </div>
 

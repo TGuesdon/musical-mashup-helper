@@ -3,10 +3,11 @@ import { Artist } from 'src/app/models/artist.model';
 import { Song } from 'src/app/models/song.model';
 import { Tonality } from 'src/app/models/tonality.enum';
 import { ArtistService } from 'src/app/services/artist.service';
-import { FiltersService } from 'src/app/services/filters.service';
+import { ControlsService } from 'src/app/services/controls.service';
 import { SongService } from 'src/app/services/song.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddSongDialogComponent } from '../../songs/add-song-dialog/add-song-dialog.component';
+import { CompatibleSongComponent } from '../../songs/compatible-song/compatible-song.component';
 @Component({
   selector: 'app-matrix',
   templateUrl: './matrix.component.html',
@@ -36,7 +37,7 @@ export class MatrixComponent implements OnInit {
 
   constructor(private songService: SongService,
               private artistService: ArtistService,
-              public filtersService: FiltersService,
+              public controlsService: ControlsService,
               private dialog: MatDialog) {
 
   }
@@ -59,8 +60,8 @@ export class MatrixComponent implements OnInit {
     this.artistService.getAllArtists().then(
       (artists: Artist[]) => {
         this.artists = artists;
-        if(this.filtersService.idSelectedArtists == null){
-          this.filtersService.initializeArtists(artists);
+        if(this.controlsService.idSelectedArtists == null){
+          this.controlsService.initializeArtists(artists);
         }
       }
     )
@@ -81,6 +82,19 @@ export class MatrixComponent implements OnInit {
         this.songs[i][j] = new Array<Song>();
       }
     }
+  }
+
+  openControlDialog(id: string, i: number, j: number, k: number){
+    console.log(this.controlsService.editMode);
+    if(this.controlsService.editMode){
+      this.openEditDialog(id, i, j, k);
+    }else{
+      this.openCompatibleSongDialog();
+    }
+  }
+
+  openCompatibleSongDialog(){
+    const dialogRef = this.dialog.open(CompatibleSongComponent);
   }
 
   openEditDialog(id: string, i: number, j: number, k: number){

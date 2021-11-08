@@ -14,6 +14,8 @@ import { ListSongComponent } from './components/songs/list-song/list-song.compon
 import { ListArtistComponent } from './components/artists/list-artist/list-artist.component';
 import { WarningDeleteComponent } from './components/utils/warning-delete/warning-delete.component';
 import { AuthComponent } from './components/utils/auth/auth.component';
+import { AddSongDialogComponent } from './components/songs/add-song-dialog/add-song-dialog.component';
+import { CompatibleSongComponent } from './components/songs/compatible-song/compatible-song.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -30,7 +32,9 @@ import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon'; 
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { AddSongDialogComponent } from './components/songs/add-song-dialog/add-song-dialog.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -45,6 +49,7 @@ import { AddSongDialogComponent } from './components/songs/add-song-dialog/add-s
     WarningDeleteComponent,
     AuthComponent,
     AddSongDialogComponent,
+    CompatibleSongComponent,
 
   ],
   imports: [
@@ -62,7 +67,10 @@ import { AddSongDialogComponent } from './components/songs/add-song-dialog/add-s
     MatTableModule,
     MatIconModule,
     MatDialogModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatCardModule,
+    MatSlideToggleModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ControlsService } from 'src/app/services/controls.service';
 
 @Component({
   selector: 'app-mashup-helper',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MashupHelperComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public controlsService: ControlsService
+  ) { }
 
   ngOnInit(): void {
     

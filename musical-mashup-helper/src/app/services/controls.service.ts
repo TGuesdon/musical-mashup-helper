@@ -9,6 +9,9 @@ export class ControlsService {
   public idSelectedArtists: string[];
   public editMode: boolean = true;
 
+  public min_bpm : number = 80;
+  public max_bpm : number = 180;
+
   constructor() { }
 
   initializeArtists(artists){

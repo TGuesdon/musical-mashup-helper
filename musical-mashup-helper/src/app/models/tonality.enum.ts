@@ -1,5 +1,5 @@
 export enum Tonality {
-    C,
+    C = 0,
     Db,
     D,
     Eb,

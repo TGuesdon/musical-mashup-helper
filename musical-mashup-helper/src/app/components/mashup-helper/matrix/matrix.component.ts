@@ -16,8 +16,6 @@ import { CompatibleSongComponent } from '../../songs/compatible-song/compatible-
 export class MatrixComponent implements OnInit {
 
   public static TONALITY_NUMBER : number = Object.keys(Tonality).length / 2;
-  public min_bpm : number = 80;
-  public max_bpm : number = 180;
 
   /**
    * Variable used by the html table
@@ -70,13 +68,13 @@ export class MatrixComponent implements OnInit {
   fillMatrix(songs : Song[]){
     songs.forEach((s : Song) => {
       let round_bpm = Math.round(s.bpm);
-      this.songs[round_bpm - this.min_bpm][Tonality[s.tonality]].push(s);
+      this.songs[round_bpm - this.controlsService.min_bpm][Tonality[s.tonality]].push(s);
     });
   }
 
   initializeMatrix(){
     this.songs = new Array<Array<Array<Song>>>();
-    for(let i : number = 0; i < this.max_bpm - this.min_bpm; i++){
+    for(let i : number = 0; i < this.controlsService.max_bpm - this.controlsService.min_bpm; i++){
       this.songs[i] = new Array<Array<Song>>();
       for(let j : number = 0; j < MatrixComponent.TONALITY_NUMBER; j++){
         this.songs[i][j] = new Array<Song>();
@@ -84,17 +82,21 @@ export class MatrixComponent implements OnInit {
     }
   }
 
-  openControlDialog(id: string, i: number, j: number, k: number){
+  openControlDialog(s: Song, i: number, j: number, k: number){
     console.log(this.controlsService.editMode);
     if(this.controlsService.editMode){
-      this.openEditDialog(id, i, j, k);
+      this.openEditDialog(s.id, i, j, k);
     }else{
-      this.openCompatibleSongDialog();
+      this.openCompatibleSongDialog(s);
     }
   }
 
-  openCompatibleSongDialog(){
-    const dialogRef = this.dialog.open(CompatibleSongComponent);
+  openCompatibleSongDialog(s){
+    const dialogRef = this.dialog.open(CompatibleSongComponent, {
+      data: {
+        song: s
+      }
+    });
   }
 
   openEditDialog(id: string, i: number, j: number, k: number){

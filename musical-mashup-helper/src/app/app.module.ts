@@ -35,6 +35,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCardModule} from '@angular/material/card';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,9 @@ import {MatDividerModule} from '@angular/material/divider';
     MatPaginatorModule,
     MatCardModule,
     MatSlideToggleModule,
-    MatDividerModule
+    MatDividerModule,
+    MatExpansionModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

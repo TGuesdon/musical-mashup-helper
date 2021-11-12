@@ -28,6 +28,19 @@
         </mat-form-field>
     </div>
 
+    <div>
+            <mat-button-toggle-group formControlName="prod">
+                <mat-button-toggle value="false">Song</mat-button-toggle>
+                <mat-button-toggle value="true">Prod</mat-button-toggle>
+            </mat-button-toggle-group>
+    </div>
+
+    <div>
+            <mat-button-toggle-group formControlName="rapped">
+                <mat-button-toggle value="false">Sung</mat-button-toggle>
+                <mat-button-toggle value="true">Rapped</mat-button-toggle>
+            </mat-button-toggle-group>
+    </div>
 
     <button mat-button type="submit"
         [disabled]="songForm.invalid">

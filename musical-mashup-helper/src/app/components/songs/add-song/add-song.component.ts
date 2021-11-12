@@ -77,17 +77,24 @@ export class AddSongComponent implements OnInit {
       tonality: [
         this.song ? this.song.tonality: '',
         Validators.required
+      ],
+      prod: [
+        this.song ? this.song.prod: null,
+      ],
+      rapped: [
+        this.song ? this.song.rapped: null,
       ]
     });
   }
 
   onAddSong(){
- 
     //Add new song
     let song = new Song(this.songForm.value.name, 
                         this.songForm.value.artist, 
                         this.songForm.value.bpm,
-                        this.songForm.value.tonality);
+                        this.songForm.value.tonality,
+                        this.songForm.value.prod,
+                        this.songForm.value.rapped);
 
     //Edit song
     if(this.song){

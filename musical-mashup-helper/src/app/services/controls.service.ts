@@ -56,6 +56,24 @@ export class ControlsService {
     }
   }
 
+  changeArtistRapped(id: string){
+    if(this.selected.has(id)){
+      this.selected.set(id, {
+        rapped: !this.selected.get(id).rapped,
+        sung: this.selected.get(id).sung
+      });
+    }
+  }
+
+  changeArtistSung(id: string){
+    if(this.selected.has(id)){
+      this.selected.set(id, {
+        rapped: this.selected.get(id).rapped,
+        sung: !this.selected.get(id).sung
+      });
+    }
+  }
+
   isSelected(song: Song){
     if(this.selected.has(song.artist)){
       if(this.selected.get(song.artist).rapped && song.rapped){

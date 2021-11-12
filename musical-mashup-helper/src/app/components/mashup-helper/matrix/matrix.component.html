@@ -16,12 +16,6 @@
                                     'prod': s.prod}"
                         [style.background-color]="colors.get(s.artist)"
                         (click)="openControlDialog(s, i, j, k)">
-                        <div class="indicator" *ngIf="s.rapped == false">
-                            <mat-icon>music_note</mat-icon>
-                        </div>
-                        <div class="indicator" *ngIf="s.rapped == true">
-                            <mat-icon class="indicator">mic</mat-icon>
-                        </div>
                         <div class="song-info">
                             <div>                         
                                 {{ s.name }}
@@ -44,13 +38,25 @@
                 </button>
             </div>
             <ul *ngIf="artists && colors">
-                <li *ngFor="let artist of artists">
+                <li *ngFor="let artist of artists" class="artist-control">
                     <button
                     [style.background-color]="colors.get(artist.id)"
                     [className]="controlsService.artistsIsSelected(artist.id) ? 'selector selected' : 'selector not-selected'" 
                     (click)="controlsService.changeArtist(artist.id)">
                         <span class="name">{{ artist.name }}</span>
                     </button>
+                    <div class="mini-fabs">
+                        <button mat-mini-fab
+                        (click)="controlsService.changeArtistRapped(artist.id)"
+                        [class.mini-fab-deselected]="!controlsService.selected.get(artist.id).rapped">
+                            <mat-icon class="selector-icon">mic</mat-icon>
+                        </button>
+                        <button mat-mini-fab
+                        (click)="controlsService.changeArtistSung(artist.id)"
+                        [class.mini-fab-deselected]="!controlsService.selected.get(artist.id).sung"> 
+                            <mat-icon class="selector-icon">music_note</mat-icon>
+                        </button>
+                    </div>
                 </li>
             </ul>
         </div>

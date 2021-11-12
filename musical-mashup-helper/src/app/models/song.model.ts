@@ -15,8 +15,16 @@ export class Song {
         this.artist = artist;
         this.bpm = bpm;
         this.tonality = tonality;
-        this.prod = prod;
-        this.rapped = rapped;
+        if(prod == undefined){
+            this.prod = false;
+        }else{
+            this.prod = prod;
+        }
+        if(rapped == undefined){
+            this.rapped = true;
+        }else{
+            this.rapped = rapped;
+        }
     }
 
     setId(id: string){

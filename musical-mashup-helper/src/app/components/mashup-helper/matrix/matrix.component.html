@@ -11,8 +11,8 @@
                     <div 
                         *ngFor="let s of tonality, let k = index" 
                         [ngClass]="{'song': true,
-                                    'selected': controlsService.idSelectedArtists.indexOf(s.artist) > -1,
-                                    'not-selected': controlsService.idSelectedArtists.indexOf(s.artist) == -1,
+                                    'selected': controlsService.isSelected(s),
+                                    'not-selected': !controlsService.isSelected(s),
                                     'prod': s.prod}"
                         [style.background-color]="colors.get(s.artist)"
                         (click)="openControlDialog(s, i, j, k)">
@@ -47,7 +47,7 @@
                 <li *ngFor="let artist of artists">
                     <button
                     [style.background-color]="colors.get(artist.id)"
-                    [className]="controlsService.idSelectedArtists.indexOf(artist.id) > -1 ? 'selector selected' : 'selector not-selected'" 
+                    [className]="controlsService.artistsIsSelected(artist.id) ? 'selector selected' : 'selector not-selected'" 
                     (click)="controlsService.changeArtist(artist.id)">
                         <span class="name">{{ artist.name }}</span>
                     </button>

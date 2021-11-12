@@ -31,8 +31,6 @@ export class MatrixComponent implements OnInit {
   public colors: Map<string, string>;
   public artists: Artist[];
 
-  public idSelectedArtist: String[] = [];
-
   constructor(private songService: SongService,
               private artistService: ArtistService,
               public controlsService: ControlsService,
@@ -58,7 +56,7 @@ export class MatrixComponent implements OnInit {
     this.artistService.getAllArtists().then(
       (artists: Artist[]) => {
         this.artists = artists;
-        if(this.controlsService.idSelectedArtists == null){
+        if(this.controlsService.selected == null){
           this.controlsService.initializeArtists(artists);
         }
       }
@@ -117,6 +115,7 @@ export class MatrixComponent implements OnInit {
       }
     )
   }
+
 
   isInt(value) {
     var x;

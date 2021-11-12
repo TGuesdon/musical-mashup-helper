@@ -19,18 +19,9 @@ export class ControlsService {
   initializeArtists(artists){
     this.selected = new Map<string, {rapped: boolean, sung: boolean}>();
     this.selectArtists(artists);
-    console.log(this.selected);
   }
 
   selectArtists(artists){
-    
-    // artists.forEach(
-    //   (a : Artist) => {
-    //     if(this.idSelectedArtists.indexOf(a.id) == -1){
-    //       this.idSelectedArtists.push(a.id);
-    //     }
-    //   }
-    // )
     artists.forEach(
       (a: Artist) => {
         this.selected.set(a.id, {rapped:true, sung: true});
@@ -76,11 +67,11 @@ export class ControlsService {
 
   isSelected(song: Song){
     if(this.selected.has(song.artist)){
-      if(this.selected.get(song.artist).rapped && song.rapped){
+      if(this.selected.get(song.artist).rapped && song.rapped === true){
         return true;
       }
 
-      if(this.selected.get(song.artist).sung && !song.rapped){
+      if(this.selected.get(song.artist).sung && song.rapped === false){
         return true;
       }
     }

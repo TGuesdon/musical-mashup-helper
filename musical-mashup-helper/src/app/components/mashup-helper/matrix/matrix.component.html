@@ -10,11 +10,24 @@
                 <td *ngFor="let tonality of bpm, let j = index">
                     <div 
                         *ngFor="let s of tonality, let k = index" 
-                        [className]="controlsService.idSelectedArtists.indexOf(s.artist) > -1 ? 'song selected' : 'song not-selected'"
+                        [ngClass]="{'song': true,
+                                    'selected': controlsService.idSelectedArtists.indexOf(s.artist) > -1,
+                                    'not-selected': controlsService.idSelectedArtists.indexOf(s.artist) == -1,
+                                    'prod': s.prod}"
                         [style.background-color]="colors.get(s.artist)"
                         (click)="openControlDialog(s, i, j, k)">
-                        <div>{{ s.name }}</div>
-                        <div *ngIf="!isInt(s.bpm)">{{ s.bpm }} BPM</div>
+                        <div class="indicator" *ngIf="s.rapped == false">
+                            <mat-icon>music_note</mat-icon>
+                        </div>
+                        <div class="indicator" *ngIf="s.rapped == true">
+                            <mat-icon class="indicator">mic</mat-icon>
+                        </div>
+                        <div class="song-info">
+                            <div>                         
+                                {{ s.name }}
+                            </div>
+                            <div *ngIf="!isInt(s.bpm)">{{ s.bpm }} BPM</div>
+                        </div>
                     </div>
                 </td>
             </tr>

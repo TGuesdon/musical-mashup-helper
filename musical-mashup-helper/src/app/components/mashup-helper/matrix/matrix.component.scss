@@ -7,6 +7,29 @@
     box-shadow: var(--material-min);
 }
 
+.song{
+    display: flex;
+}
+
+.indicator{
+    width: 10%;
+}
+
+.indicator .mat-icon{
+    font-size: 15px;
+    display: block;
+    color: white;
+}
+
+.prod{
+    border: dashed 3px #3f51b5;
+    box-sizing: border-box;
+}
+
+.song-info{
+    width: 90%;
+}
+
 #body{
     display: flex;
     margin-top: 10px;

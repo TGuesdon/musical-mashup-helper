@@ -88,6 +88,7 @@ export class AddSongComponent implements OnInit {
   }
 
   onAddSong(){
+
     //Add new song
     let song = new Song(this.songForm.value.name, 
                         this.songForm.value.artist, 

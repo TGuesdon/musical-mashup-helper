@@ -22,7 +22,7 @@ export class ListSongComponent implements OnInit {
   public searchString: string = '';
   public dataSource: MatTableDataSource<Song> = new MatTableDataSource<Song>();
 
-  public displayedColumns: string[] = ['name', 'artist', 'bpm', 'tonality', 'action'];
+  public displayedColumns: string[] = ['name', 'artist', 'bpm', 'tonality', 'prod', 'rapped', 'action'];
 
   public artists_name: Map<string, string>;
 

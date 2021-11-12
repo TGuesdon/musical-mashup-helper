@@ -7,7 +7,7 @@
         <div *ngIf="songs && artists_name">
         <h2>All songs</h2>
         <mat-form-field appearance="fill">
-            <mat-label>Titre :</mat-label>
+            <mat-label>Search :</mat-label>
             <input [ngModel]="searchString" (ngModelChange)="searchStringChange($event)" name="search" matInput class="mat-select" type="text" >
         </mat-form-field>
         <table mat-table [dataSource]="dataSource">
@@ -35,6 +35,18 @@
                 <td mat-cell *matCellDef="let element"> {{element.tonality}} </td>
             </ng-container>
         
+            <!-- Prod -->
+            <ng-container matColumnDef="prod">
+                <th mat-header-cell *matHeaderCellDef> Prod ? </th>
+                <td mat-cell *matCellDef="let element"> {{element.prod ? element.prod : '?'}} </td>
+            </ng-container>
+
+            <!-- Prod -->
+            <ng-container matColumnDef="rapped">
+                <th mat-header-cell *matHeaderCellDef> Rapped ? </th>
+                <td mat-cell *matCellDef="let element"> {{element.rapped ? element.rapped : '?'}} </td>
+            </ng-container>
+
             <!-- Edit -->
             <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef> Actions </th>
